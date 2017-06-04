@@ -1,6 +1,6 @@
 {
   "name": "abraxas-time-tracking",
-  "homepage": "",
+  "homepage": "https://abraxas-time-tracker.firebaseapp.com/",
   "version": "0.1.0",
   "private": false,
   "devDependencies": {
