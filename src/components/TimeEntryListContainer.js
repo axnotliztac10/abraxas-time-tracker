@@ -5,6 +5,8 @@ import {fetchList} from '../actions/timeEntries'
 import {groupByDay} from '../utils/timeEntries'
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table'
 import Snackbar from 'material-ui/Snackbar'
+import SortIcon from 'material-ui/svg-icons/action/swap-vert';
+
 import TimeEntryListItemContainer from './TimeEntryListItemContainer'
 import { SmartTableRow } from './SmartTableRow';
 
@@ -33,12 +35,37 @@ export class TimeEntryListItemsByDay extends Component {
   static propTypes = {
     entries: PropTypes.array
   }
+
+  sortByColumn(column, data) {
+    const isAsc = this.state.sortHeader === column ? !this.state.isAsc : true;
+    const sortedData = data.sort((a, b) => sortFunc(a, b, column));
+
+    if (!isAsc) {
+      sortedData.reverse();
+    }
+
+    this.setState({
+      data: sortedData,
+      sortHeader: column,
+      isAsc
+    });
+  }
+
   render() {
     return (
       <Table>
         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
           <TableRow>
-            <TableHeaderColumn colSpan="4">{this.props.date}</TableHeaderColumn>
+            <TableHeaderColumn>{this.props.date}</TableHeaderColumn>
+            <TableHeaderColumn key='1'>
+                <div>
+                  Sort by Duration
+                  <SortIcon
+                    id='duration'
+                    onMouseUp={(e) => this.sortByColumn(e.target.id, []) }
+                  />
+                </div>
+              </TableHeaderColumn>
           </TableRow>
         </TableHeader>
         <TableBody displayRowCheckbox={false}>
