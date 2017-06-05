@@ -1,6 +1,6 @@
 {
   "name": "abraxas-time-tracking",
-  "homepage": "https://abraxas-time-tracker.firebaseapp.com/",
+  "homepage": "https://abraxas-time-tracking.herokuapp.com/",
   "version": "0.1.0",
   "author": "Metabaron",
   "private": false,
