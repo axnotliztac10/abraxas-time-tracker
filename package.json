@@ -2,6 +2,7 @@
   "name": "abraxas-time-tracking",
   "homepage": "https://abraxas-time-tracker.firebaseapp.com/",
   "version": "0.1.0",
+  "author": "Metabaron",
   "private": false,
   "devDependencies": {
     "@kadira/storybook": "^2.21.0",
