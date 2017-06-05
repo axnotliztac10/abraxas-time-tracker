@@ -45,8 +45,8 @@ class TimeEntryListItem extends Component {
     this.props.onSelectTag(this.props.uid, this.props.id, tagId)
   }
 
-  getDuration = (start, end) => {
-    return getTimeDuration(start, end)
+  getDuration = (start, end, raw) => {
+    return getTimeDuration(start, end, raw)
   }
 
   render() {
@@ -79,6 +79,9 @@ class TimeEntryListItem extends Component {
           </div>        
         </TableRowColumn>
         <TableRowColumn>{this.getDuration(this.props.startTime, this.props.endTime)}</TableRowColumn>
+        {this.getDuration(this.props.startTime, this.props.endTime, true) / 60 > 60  && <TableRowColumn>Largo</TableRowColumn>}
+        {this.getDuration(this.props.startTime, this.props.endTime, true) / 60 >= 30  && <TableRowColumn>Mediano</TableRowColumn>}
+        {this.getDuration(this.props.startTime, this.props.endTime, true) / 60 < 30  && <TableRowColumn>Corto</TableRowColumn>}
         <TableRowColumn>
           <div onClick={(e) => {
             e.preventDefault();

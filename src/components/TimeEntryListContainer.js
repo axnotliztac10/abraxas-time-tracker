@@ -5,30 +5,16 @@ import {fetchList} from '../actions/timeEntries'
 import {groupByDay} from '../utils/timeEntries'
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow} from 'material-ui/Table'
 import Snackbar from 'material-ui/Snackbar'
-import SortIcon from 'material-ui/svg-icons/action/swap-vert';
+import SortIcon from 'material-ui/svg-icons/action/swap-vert'
+
+import {getTimeDuration} from '../utils/time'
 
 import TimeEntryListItemContainer from './TimeEntryListItemContainer'
-import { SmartTableRow } from './SmartTableRow';
 
-function sortFunc(a, b, key) {
-  if (typeof(a[key]) === 'number') {
-    return a[key] - b[key];
-  }
-
-  const ax = [];
-  const bx = [];
-
-  a[key].replace(/(\d+)|(\D+)/g, (_, $1, $2) => { ax.push([$1 || Infinity, $2 || '']); });
-  b[key].replace(/(\d+)|(\D+)/g, (_, $1, $2) => { bx.push([$1 || Infinity, $2 || '']); });
-
-  while (ax.length && bx.length) {
-    const an = ax.shift();
-    const bn = bx.shift();
-    const nn = (an[0] - bn[0]) || an[1].localeCompare(bn[1]);
-    if (nn) return nn;
-  }
-
-  return ax.length - bx.length;
+function sortFunc(a, b) {
+  var durationA = getTimeDuration(a.startTime, a.endTime, true);
+  var durationB = getTimeDuration(b.startTime, b.endTime, true)
+  return durationA - durationB;
 }
 
 export class TimeEntryListItemsByDay extends Component {
@@ -36,19 +22,17 @@ export class TimeEntryListItemsByDay extends Component {
     entries: PropTypes.array
   }
 
-  sortByColumn(column, data) {
-    const isAsc = this.state.sortHeader === column ? !this.state.isAsc : true;
-    const sortedData = data.sort((a, b) => sortFunc(a, b, column));
+  static isAsc = false;
+
+  sortByColumn(data, isAsc) {
+    const sortedData = data.sort((a, b) => sortFunc(a, b));
 
     if (!isAsc) {
       sortedData.reverse();
     }
 
-    this.setState({
-      data: sortedData,
-      sortHeader: column,
-      isAsc
-    });
+    this.isAsc = !isAsc;
+    this.forceUpdate()
   }
 
   render() {
@@ -57,12 +41,11 @@ export class TimeEntryListItemsByDay extends Component {
         <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
           <TableRow>
             <TableHeaderColumn>{this.props.date}</TableHeaderColumn>
-            <TableHeaderColumn key='1'>
+            <TableHeaderColumn>
                 <div>
-                  Sort by Duration
+                  Duration
                   <SortIcon
-                    id='duration'
-                    onMouseUp={(e) => this.sortByColumn(e.target.id, []) }
+                    onMouseUp={(e) => this.sortByColumn(this.props.entries, this.isAsc) }
                   />
                 </div>
               </TableHeaderColumn>

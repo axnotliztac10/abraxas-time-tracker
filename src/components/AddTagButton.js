@@ -81,7 +81,7 @@ export class TagItemList extends Component {
           />
         </List>
         <Divider />
-        <List className="list" style={{maxHeight: this.props.dialogMaxHeight, 'overflowY': 'scroll', 'overflowX': 'hidden'}}>
+        <List className="list" style={{maxHeight: this.props.dialogMaxHeight, 'overflowY': 'auto', 'overflowX': 'hidden'}}>
           {this.props.tags.map((tag) => {
             if (this.state.filterTag === '' || tag.name.indexOf(this.state.filterTag) !== -1) {
               return (

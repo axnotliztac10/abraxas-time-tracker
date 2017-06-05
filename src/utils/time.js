@@ -1,7 +1,7 @@
 export const pad0Left = (num) => (String('0' + num).slice(-2))
 
 //build time duration in format hh:mm:ss
-export const getTimeDuration = (startTime, endTime) => {
+export const getTimeDuration = (startTime, endTime, raw) => {
   if (typeof startTime === 'string' || typeof startTime === 'number') {
     startTime = new Date(startTime)
   }
@@ -11,6 +11,11 @@ export const getTimeDuration = (startTime, endTime) => {
   }
 
   const durationInSecond = Math.round((endTime - startTime) / 1000)
+
+  if (raw) {
+    return durationInSecond;
+  }
+
   let second = durationInSecond % 60
   let durationInMinute = 0
   let minute = 0
