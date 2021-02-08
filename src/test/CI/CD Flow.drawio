@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-02-08T18:40:52.428Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36" etag="KiHPNJz24061xJ1m4xJA" version="14.2.9" type="github">
+<mxfile host="app.diagrams.net" modified="2021-02-08T18:41:00.112Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36" etag="m2-Md0VLrg8BgDFG_J87" version="14.2.9" type="github">
   <diagram name="Page-1" id="3e8102d1-ef87-2e61-34e1-82d9a586fe2e">
-    <mxGraphModel dx="852" dy="423" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="2555" dy="1268" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -44,7 +44,7 @@
           <mxGeometry x="680" y="19" width="230" height="20" as="geometry" />
         </mxCell>
         <mxCell id="_xwVxEHKjj1f3G5-KM4j-19" value="&lt;span style=&quot;font-size: 10px&quot;&gt;El ciclo de vida de desarrollo basado en Continous integration y delivery estara sustentado en la herramienta Pull Request workflow:&lt;br&gt;&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="680" y="60" width="390" height="30" as="geometry" />
+          <mxGeometry x="680" y="55" width="390" height="30" as="geometry" />
         </mxCell>
         <mxCell id="_xwVxEHKjj1f3G5-KM4j-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
